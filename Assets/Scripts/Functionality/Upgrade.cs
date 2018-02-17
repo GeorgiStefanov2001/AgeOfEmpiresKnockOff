@@ -11,8 +11,7 @@ public class Upgrade : MonoBehaviour {
 
     public GameObject upgradePanel;
     public GameObject upgradeName;
-    public GameObject town2;
-    public GameObject town3;
+    public GameObject upgradeLevel;
     
     void Start() {
 
@@ -20,13 +19,14 @@ public class Upgrade : MonoBehaviour {
 
     void Update() {
         upgradePanel.SetActive(toBeUpgraded);
-        SetUpgradeName();
+        SetUpgradeNameAndLevel();
     }
 
     public void UpgradeOn()
     {
         toBeUpgraded = true;
         UpgradeName = EventSystem.current.currentSelectedGameObject.tag;
+        upgradeLevel.GetComponent<Text>().text = "To Level " + (GameObject.Find(EventSystem.current.currentSelectedGameObject.tag).GetComponent<TownHall>().level + 1);
     }
 
     public void UpgradeOff()
@@ -34,29 +34,29 @@ public class Upgrade : MonoBehaviour {
         toBeUpgraded = false;
     }
 
-    void SetUpgradeName()
+    void SetUpgradeNameAndLevel()
     {
         upgradeName.GetComponent<Text>().text = UpgradeName;
     }
 
     public void UpgradeBuilding()
     {
-        if(UpgradeName == "Town Hall" && GameObject.Find("TownHall").GetComponent<TownHall>().level < 15)
+        if(UpgradeName == "Town Hall" && GameObject.Find("Town Hall").GetComponent<TownHall>().level < 15)
         {
-            if (GameObject.Find("TownHall").GetComponent<TownHall>().level >= 5)
+            if (GameObject.Find("Town Hall").GetComponent<TownHall>().level >= 5)
             {
-                if (GameObject.Find("TownHall").GetComponent<TownHall>().level >= 10)
+                if (GameObject.Find("Town Hall").GetComponent<TownHall>().level >= 10)
                 {
-                    town3.SetActive(true);
+                    PlayerPrefs.SetInt("Town3", 1);
                 }
-                town2.SetActive(true);
+                PlayerPrefs.SetInt("Town2", 1);
             }
             else
             {
                 GameObject.Find("TownHall").transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
             }
             GameObject.Find("TownHall").GetComponent<TownHall>().level += 1;
-            GameObject.Find("TownHall").GetComponent<TownHall>().maxHp += 50;
+            GameObject.Find("TownHall").GetComponent<TownHall>().maxHp += 100;
             GameObject.Find("TownHall").GetComponent<TownHall>().currHealth = GameObject.Find("TownHall").GetComponent<TownHall>().maxHp;
         }
     }

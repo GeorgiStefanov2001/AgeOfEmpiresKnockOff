@@ -20,6 +20,8 @@ public class TownHall : MonoBehaviour
     public GameObject Popul;
     public GameObject Houses;
     public GameObject Lvl;
+    public GameObject town2;
+    public GameObject town3;
 
     void Start()
     {
@@ -42,6 +44,7 @@ public class TownHall : MonoBehaviour
         Population();
         HousesNumber();
         Level();
+        Upgrades();
     }
 
     void LevelUp()
@@ -108,6 +111,18 @@ public class TownHall : MonoBehaviour
     {
         Lvl.GetComponent<Text>().text = "LVL " + level;
 
+    }
+
+    void Upgrades() {
+        if (PlayerPrefs.GetInt("Town2") == 1)
+        {
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            town2.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("Town3") == 1)
+        {
+            town3.SetActive(true);
+        }
     }
 
     private void OnApplicationQuit()
