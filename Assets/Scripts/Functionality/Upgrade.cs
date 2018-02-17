@@ -14,8 +14,7 @@ public class Upgrade : MonoBehaviour {
     public GameObject upgradeLevel;
     
     void Start() {
-        PlayerPrefs.SetInt("Town2", 0);
-        PlayerPrefs.SetInt("Town3", 0);
+
     }
 
     void Update() {
@@ -27,7 +26,14 @@ public class Upgrade : MonoBehaviour {
     {
         toBeUpgraded = true;
         UpgradeName = EventSystem.current.currentSelectedGameObject.tag;
-        upgradeLevel.GetComponent<Text>().text = "To Level " + (GameObject.Find(EventSystem.current.currentSelectedGameObject.tag).GetComponent<TownHall>().level + 1);
+        if (GameObject.Find(EventSystem.current.currentSelectedGameObject.tag).GetComponent<TownHall>().level >= GameObject.Find(EventSystem.current.currentSelectedGameObject.tag).GetComponent<TownHall>().maxLevel)
+        {
+            upgradeLevel.GetComponent<Text>().text = "MAX LEVEL";
+        }
+        else
+        {
+            upgradeLevel.GetComponent<Text>().text = "To Level " + (GameObject.Find(EventSystem.current.currentSelectedGameObject.tag).GetComponent<TownHall>().level + 1);
+        }
     }
 
     public void UpgradeOff()
@@ -42,8 +48,9 @@ public class Upgrade : MonoBehaviour {
 
     public void UpgradeBuilding()
     {
-        if(UpgradeName == "Town Hall" && GameObject.Find("Town Hall").GetComponent<TownHall>().level < 15)
+        if (UpgradeName == "Town Hall" && GameObject.Find("Town Hall").GetComponent<TownHall>().level < GameObject.Find("Town Hall").GetComponent<TownHall>().maxLevel)
         {
+
             if (GameObject.Find("Town Hall").GetComponent<TownHall>().level >= 5)
             {
                 if (GameObject.Find("Town Hall").GetComponent<TownHall>().level >= 10)
@@ -59,6 +66,15 @@ public class Upgrade : MonoBehaviour {
             GameObject.Find("Town Hall").GetComponent<TownHall>().level += 1;
             GameObject.Find("Town Hall").GetComponent<TownHall>().maxHp += 100;
             GameObject.Find("Town Hall").GetComponent<TownHall>().currHealth = GameObject.Find("Town Hall").GetComponent<TownHall>().maxHp;
+        }
+
+        if (GameObject.Find(EventSystem.current.currentSelectedGameObject.tag).GetComponent<TownHall>().level >= GameObject.Find(EventSystem.current.currentSelectedGameObject.tag).GetComponent<TownHall>().maxLevel)
+        {
+            upgradeLevel.GetComponent<Text>().text = "MAX LEVEL";
+        }
+        else
+        {
+            upgradeLevel.GetComponent<Text>().text = "To Level " + (GameObject.Find(EventSystem.current.currentSelectedGameObject.tag).GetComponent<TownHall>().level + 1);
         }
     }
 }

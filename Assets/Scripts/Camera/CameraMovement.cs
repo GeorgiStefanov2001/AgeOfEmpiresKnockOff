@@ -22,7 +22,7 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        PlayerPrefs.SetInt("Movement", 1); //for testing purposes
+        PlayerPrefs.SetInt("Movement", 2); //for testing purposes
         if (PlayerPrefs.GetInt("Movement") == 1) //checking the player's desired camera movement method
         {
             MouseMovement();

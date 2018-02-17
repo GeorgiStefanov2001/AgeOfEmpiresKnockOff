@@ -14,6 +14,7 @@ public class TownHall : MonoBehaviour
     public int population = 0; // (10 here )
     public int numOfHouses = 0; // (0 here )
     public string leader; // the player will choose
+    public int maxLevel = 15;
 
     public GameObject townHallInfoPanel;
     public GameObject HP;
