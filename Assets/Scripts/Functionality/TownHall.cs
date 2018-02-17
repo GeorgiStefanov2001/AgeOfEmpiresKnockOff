@@ -9,18 +9,21 @@ public class TownHall : MonoBehaviour
     bool canLevelUp = false;
     float colliderRange = 100f;
     bool showStats = false;
-    public int maxHp = 0;
-    public int currHealth = 0;
-    public int population = 0;
-    public int numOfHouses = 0;
-    public string leader;
+    public int maxHp = 0; //when the player is done with the main menus and starts the game we will set the player prefs to a default value (100 here)
+    public int currHealth = 0; // (100 here also)
+    public int population = 0; // (10 here )
+    public int numOfHouses = 0; // (0 here )
+    public string leader; // the player will choose
 
     GameObject townHallInfoPanel;
     public GameObject HP;
+    public GameObject Popul;
+    public GameObject Houses;
+    public GameObject Lvl;
 
     void Start()
     {
-        population =PlayerPrefs.GetInt("Population");
+        population = PlayerPrefs.GetInt("Population");
         numOfHouses = PlayerPrefs.GetInt("NumberOfHouses"); 
         maxHp = PlayerPrefs.GetInt("maxHealth"); 
         currHealth = PlayerPrefs.GetInt("CurrentHealth");
@@ -36,6 +39,9 @@ public class TownHall : MonoBehaviour
         LevelUp();
         CheckStats();
         AddjustHealth(0);
+        Population();
+        HousesNumber();
+        Level();
     }
 
     void LevelUp()
@@ -84,6 +90,23 @@ public class TownHall : MonoBehaviour
     public void Health()
     {
         HP.GetComponent<Text>().text = "Health: " + currHealth + " / " + maxHp;
+
+    }
+
+    public void Population()
+    {
+        Popul.GetComponent<Text>().text = "Population: " + population;
+
+    }
+
+    public void HousesNumber()
+    {
+        Houses.GetComponent<Text>().text = "Number of houses: " + numOfHouses;
+    }
+
+    public void Level()
+    {
+        Lvl.GetComponent<Text>().text = "LVL " + level;
 
     }
 
