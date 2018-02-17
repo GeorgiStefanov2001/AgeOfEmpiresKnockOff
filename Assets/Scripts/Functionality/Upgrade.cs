@@ -14,7 +14,8 @@ public class Upgrade : MonoBehaviour {
     public GameObject upgradeLevel;
     
     void Start() {
-
+        PlayerPrefs.SetInt("Town2", 0);
+        PlayerPrefs.SetInt("Town3", 0);
     }
 
     void Update() {
@@ -53,11 +54,11 @@ public class Upgrade : MonoBehaviour {
             }
             else
             {
-                GameObject.Find("TownHall").transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
+                GameObject.Find("Town Hall").transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
             }
-            GameObject.Find("TownHall").GetComponent<TownHall>().level += 1;
-            GameObject.Find("TownHall").GetComponent<TownHall>().maxHp += 100;
-            GameObject.Find("TownHall").GetComponent<TownHall>().currHealth = GameObject.Find("TownHall").GetComponent<TownHall>().maxHp;
+            GameObject.Find("Town Hall").GetComponent<TownHall>().level += 1;
+            GameObject.Find("Town Hall").GetComponent<TownHall>().maxHp += 100;
+            GameObject.Find("Town Hall").GetComponent<TownHall>().currHealth = GameObject.Find("Town Hall").GetComponent<TownHall>().maxHp;
         }
     }
 }

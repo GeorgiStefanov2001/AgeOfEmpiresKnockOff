@@ -15,7 +15,7 @@ public class TownHall : MonoBehaviour
     public int numOfHouses = 0; // (0 here )
     public string leader; // the player will choose
 
-    GameObject townHallInfoPanel;
+    public GameObject townHallInfoPanel;
     public GameObject HP;
     public GameObject Popul;
     public GameObject Houses;
@@ -29,8 +29,7 @@ public class TownHall : MonoBehaviour
         numOfHouses = PlayerPrefs.GetInt("NumberOfHouses"); 
         maxHp = PlayerPrefs.GetInt("maxHealth"); 
         currHealth = PlayerPrefs.GetInt("CurrentHealth");
-        level = PlayerPrefs.GetInt("TownHallLvl"); 
-        townHallInfoPanel = GameObject.Find("TownHallPanel");  
+        level = PlayerPrefs.GetInt("TownHallLvl");  
         leader = PlayerPrefs.GetString("Leader"); 
 
     }
@@ -44,6 +43,7 @@ public class TownHall : MonoBehaviour
         Population();
         HousesNumber();
         Level();
+        CheckStats();
         Upgrades();
     }
 

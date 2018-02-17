@@ -6840,7 +6840,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114371869479214274, guid: fa86bdd10121aaa4aa0fc586f29bea18, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fa86bdd10121aaa4aa0fc586f29bea18, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &815197109
@@ -8898,7 +8899,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 333030100}
-        m_MethodName: UpgradeOn
+        m_MethodName: UpgradeBuilding
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9074,6 +9075,11 @@ Prefab:
       propertyPath: town3
       value: 
       objectReference: {fileID: 207319442}
+    - target: {fileID: 114371869479214274, guid: fa86bdd10121aaa4aa0fc586f29bea18,
+        type: 2}
+      propertyPath: townHallInfoPanel
+      value: 
+      objectReference: {fileID: 919323421}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa86bdd10121aaa4aa0fc586f29bea18, type: 2}
   m_IsPrefabParent: 0
@@ -14089,7 +14095,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114371869479214274, guid: fa86bdd10121aaa4aa0fc586f29bea18, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fa86bdd10121aaa4aa0fc586f29bea18, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1930060730 stripped
