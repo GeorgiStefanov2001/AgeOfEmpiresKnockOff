@@ -14,6 +14,8 @@ public class Upgrade : MonoBehaviour {
     public GameObject upgradeLevel;
     
     void Start() {
+        //PlayerPrefs.SetInt("Town2", 0);
+        //PlayerPrefs.SetInt("Town3", 0);
 
     }
 

@@ -15,12 +15,15 @@ public class TownHall : MonoBehaviour
     public int numOfHouses = 0; // (0 here )
     public string leader; // the player will choose
     public int maxLevel = 15;
+    int remGypsies;
+    public bool takenOut = false;
 
     public GameObject townHallInfoPanel;
     public GameObject HP;
     public GameObject Popul;
     public GameObject Houses;
     public GameObject Lvl;
+    public GameObject gypsies;
     public GameObject town2;
     public GameObject town3;
 
@@ -31,8 +34,8 @@ public class TownHall : MonoBehaviour
         maxHp = PlayerPrefs.GetInt("maxHealth"); 
         currHealth = PlayerPrefs.GetInt("CurrentHealth");
         level = PlayerPrefs.GetInt("TownHallLvl");  
-        leader = PlayerPrefs.GetString("Leader"); 
-
+        leader = PlayerPrefs.GetString("Leader");
+        remGypsies = population-1;
     }
 
     void Update()
@@ -46,6 +49,7 @@ public class TownHall : MonoBehaviour
         Level();
         CheckStats();
         Upgrades();
+        GypsiesInTown();
     }
 
     void LevelUp()
@@ -112,6 +116,20 @@ public class TownHall : MonoBehaviour
     {
         Lvl.GetComponent<Text>().text = "LVL " + level;
 
+    }
+
+    public void GypsiesInTown()
+    {
+        gypsies.GetComponent<Text>().text = "Gypsies in town: " + remGypsies;
+    }
+
+    public void TakeOut()
+    {
+        if (remGypsies > 0)
+        {
+            remGypsies--;
+            takenOut = true;
+        }
     }
 
     void Upgrades() {
